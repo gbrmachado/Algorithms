@@ -54,6 +54,18 @@ var BST = function() {
         }
     }
 
+    var depth = function(node) {
+        if (node.key === null) return 0;
+
+        if (!node.pLeft.key && !node.pRight) return 1;
+
+        if (node.pLeft.key) return 1 + depth(node.pLeft);
+
+        if (node.pRight.key) return 1 + depth(node.pRight);
+
+        return Math.min(depth(node.pLeft), depth(node.pRight))+1;
+    }
+
     var minimum = function(node) {
         if (node.pLeft.key === null) return node;
         else return minimum(node.pLeft);
@@ -185,6 +197,10 @@ var BST = function() {
             } else {
                 return deleteNode(root, keyInt);
             }
+        },
+        minimumDepth: function() {
+
+            return depth(root);
         }
 
 
@@ -198,9 +214,5 @@ node.insert(15);
 node.insert(10);
 node.insert(17);
 node.insert(16);
-
-node.deleteNode(15);
-
-node.print();
-
-
+var minDepth = node.minimumDepth();
+console.log(minDepth);
