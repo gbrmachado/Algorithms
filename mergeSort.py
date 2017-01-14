@@ -1,6 +1,3 @@
-# Count the number of inversions of an array
-# an inversion is (i,j) such that i<j and A[i] > A[j]
-
 def mergeSort(a):
     l = len(a)
     if l == 0:
